@@ -11,11 +11,11 @@ import br.edu.ifpb.Entidades.Usuario;
 
 public class UsuarioDAO {
 
-	static String user = "root";
-	static String password = "";
-	static String url = "jdbc:mysql://localhost:3306/bdq";
-	static Connection connection;
-	static ResultSet rs;
+	public static String user = "root";
+	public static String password = "";
+	public static String url = "jdbc:mysql://localhost:3306/bdq";
+	public static Connection connection;
+	public static ResultSet rs;
 
 	public UsuarioDAO() {
 		// TODO Auto-generated constructor stub
@@ -49,38 +49,9 @@ public class UsuarioDAO {
 			npe.printStackTrace(System.err);
 		}
 	}
-	
-	//DML
-	
-	public void insereUsuario(ArrayList<Usuario> usuario) {
 
-		try {
+	// DML
 
-			abrirConexao();
-			Statement st = connection.createStatement();
-
-			String sql = "INSERT INTO usuario (matricula, nome, data_nasc) "
-					+ "VALUES ('"
-					+ usuario.getMatricula()
-					+ "','"
-					+ usuario.getNome()
-					+ "','"					
-					+ usuario.getData()+"')";
-
-			st.executeUpdate(sql);
-						
-			st.close();
-			fecharConexao();
-		} catch (SQLException sqle) {
-			System.out.println("Nao foi possivel realizar inserção");
-			sqle.printStackTrace(System.err);
-		} catch (NullPointerException npe){
-			System.out.println("Nao foi possivel realizar inserção");
-			npe.printStackTrace(System.err);
-		}
-
-	}
-	
 	
 
 }
