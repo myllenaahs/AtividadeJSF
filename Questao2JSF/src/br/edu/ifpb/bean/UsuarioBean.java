@@ -6,9 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import br.edu.ifpb.Entidades.Usuario;
 import br.edu.ifpb.DAO.*;
 
+@RequestScoped
+@ManagedBean
 public class UsuarioBean {
 
 	ArrayList<Usuario> usuario;
@@ -21,18 +26,45 @@ public class UsuarioBean {
 		this.usuario = new ArrayList<Usuario>();
 		this.user= new Usuario();
 	}
+		
+
+	public ArrayList<Usuario> getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(ArrayList<Usuario> usuario) {
+		this.usuario = usuario;
+	}
+
+
+
+	public Usuario getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
+
+
 
 	public void exibeUsuario() {
 
 		UsuarioDAO bd = new UsuarioDAO();
 
 		int i = 0;
+		System.out.println("Conexão aberta");
 
 		for (int cont = 0; cont < 5; cont++) {
 
 			try {
 
 				bd.abrirConexao();
+				System.out.println("Conexão aberta");
 				Statement st = connection.createStatement();
 
 				String sql = "SELECT * FROM usuario";
@@ -44,6 +76,7 @@ public class UsuarioBean {
 					user.setMatricula(rs.getInt("matricula"));
 					user.setData(rs.getString("data_nasc"));
 					user.setNome(rs.getString("nome"));
+					
 				}
 
 				i = i + 1;

@@ -1,6 +1,5 @@
 package br.edu.ifpb.bean;
 
-import br.edu.ifpb.entidade.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
