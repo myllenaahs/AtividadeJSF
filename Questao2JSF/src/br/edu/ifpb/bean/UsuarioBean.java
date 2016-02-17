@@ -52,7 +52,8 @@ public class UsuarioBean {
 
 
 
-	public void exibeUsuario() {
+	public String exibeUsuario() {
+		System.out.println("Conexão aberta");
 
 		UsuarioDAO bd = new UsuarioDAO();
 
@@ -94,6 +95,6 @@ public class UsuarioBean {
 
 			usuario.add(i, user);
 		}
-
+		return null;
 	}
 }

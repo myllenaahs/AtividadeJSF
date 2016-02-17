@@ -10,6 +10,10 @@
 </head>
 <body>
 
+	<h:commandButton id="exibe" action="#{usuarioBean.exibeUsuario}"
+		value="Exibir" />
+
+
 	<h:dataTable value="${usuarioBean.usuario}" var="user" rules="rows">
 		<f:facet name="caption">Comentários relativos aos temas desenvolvidos  
                </f:facet>

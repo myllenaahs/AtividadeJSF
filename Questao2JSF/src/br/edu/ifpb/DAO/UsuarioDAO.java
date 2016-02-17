@@ -12,7 +12,7 @@ import br.edu.ifpb.Entidades.Usuario;
 public class UsuarioDAO {
 
 	public static String user = "root";
-	public static String password = "";
+	public static String password = "ifpb";
 	public static String url = "jdbc:mysql://localhost:3306/bdq";
 	public static Connection connection;
 	public static ResultSet rs;
