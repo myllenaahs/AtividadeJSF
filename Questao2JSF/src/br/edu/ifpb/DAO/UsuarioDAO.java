@@ -35,6 +35,7 @@ public class UsuarioDAO {
 			System.out.println("Nao foi possivel conectar ao SGBD");
 			sqle.printStackTrace(System.err);
 		}
+		System.out.println("Conexão aberta");
 
 	}
 
@@ -48,10 +49,41 @@ public class UsuarioDAO {
 			System.out.println("Nao foi possivel realizar inserção");
 			npe.printStackTrace(System.err);
 		}
+		System.out.println("Conexão fechada");
 	}
 
-	// DML
+	public Usuario mostraUsuario() {
+		System.out.println("Conexão aberta");
 
-	
+		UsuarioDAO bd = new UsuarioDAO();
+		Usuario user = new Usuario();
+
+		try {
+
+			bd.abrirConexao();
+			Statement st = connection.createStatement();
+
+			String sql = "SELECT * FROM usuario";
+
+			rs = st.executeQuery(sql);
+			rs.next();
+
+			user.setMatricula(rs.getInt("matricula"));
+			user.setData(rs.getString("data_nasc"));
+			user.setNome(rs.getString("nome"));
+
+			st.close();
+			rs.close();
+			bd.fecharConexao();
+		} catch (SQLException sqle) {
+			System.out.println("Nao foi possivel realizar inserção");
+			sqle.printStackTrace(System.err);
+		} catch (NullPointerException npe) {
+			System.out.println("Nao foi possivel realizar inserção");
+			npe.printStackTrace(System.err);
+		}
+
+		return user;
+	}
 
 }
